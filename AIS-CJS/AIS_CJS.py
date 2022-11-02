@@ -1,2 +1,3 @@
 print("asd")
-pritnf("ss")
+print("gg")
+#지홍이 시발람아ㄴㄴㄴ
