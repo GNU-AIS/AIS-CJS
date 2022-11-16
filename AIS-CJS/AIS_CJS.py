@@ -1,7 +1,2 @@
-print("asd")
-print("gg")
-print("ee")
-print("ss")
-print("ss")
-print("ss")
-print("ss")
+
+
