@@ -38,12 +38,12 @@ def main():
             #score = str(html2.select("#tab04 > article.artReadStrategy > div > div > div.devStartlist.listArea.specList > div > div.specListWrap > div > ul > li:nth-child(1) > div > span > em"))[5:8]
             date_tag1 = html2.select("#tab02 > div.divReadBx.clear.devMakeSameHeight > article.artReadPeriod > div > dl.date > dd:nth-child(2)")
             date_tag2 = html2.select("#tab02 > div.divReadBx.clear.devMakeSameHeight > article.artReadPeriod > div > dl.date > dd:nth-child(4)")
-            prefer = ""
-            region = ""
-            pay = ""
-            date = ""
-            edu = ""
-            pattern = ""
+            prefer = html2.select("#dlPref > dd > span")
+            region = html2.select("#container > section > div.readSumWrap.clear > article > div.tbRow.clear > div:nth-child(2) > dl > dd:nth-child(6) > a")
+            pay = html2.select("#container > section > div.readSumWrap.clear > article > div.tbRow.clear > div:nth-child(2) > dl > dd:nth-child(4)")
+            date = html2.select("#container > section > div.readSumWrap.clear > article > div.tbRow.clear > div:nth-child(2) > dl > dd:nth-child(8)")
+            edu = html2.select("#container > section > div.readSumWrap.clear > article > div.tbRow.clear > div:nth-child(1) > dl > dd:nth-child(4) > strong")
+            pattern = html2.select("#container > section > div.readSumWrap.clear > article > div.tbRow.clear > div:nth-child(2) > dl > dd:nth-child(2) > ul > li > strong")
             for tag in date_tag1:
                 date += "시작일 " + tag.getText() +" "
             for tag in date_tag2:

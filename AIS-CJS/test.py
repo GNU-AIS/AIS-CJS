@@ -1,23 +1,24 @@
-## Ex 3-1. 창 띄우기.
-
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget
 
 
-class MyApp(QWidget):
+def main():
+    url = "https://www.catch.co.kr/JobN/Pass/JobReport/05"
+    chrome_options = webdriver.ChromeOptions()
+    wd = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-    def __init__(self):
-        super().__init__()
-        self.initUI()
+    wd.get(url)
+    xpath_button = '//*[@id="report_wrap4"]/div[2]/div[5]/p/a[12]'
+    #wd.find_element_by_link_text(xpath_button).click()
+    wd.find_element(xpath_button, "다음").click()
+    time.sleep(1000)
 
-    def initUI(self):
-        self.setWindowTitle('My First Application')
-        self.move(300, 300)
-        self.resize(400, 200)
-        self.show()
+    sys.stdout = open('stdout.txt', 'w', encoding='UTF-8')
+    print(wd.page_source)
 
 
 if __name__ == '__main__':
-   app = QApplication(sys.argv)
-   ex = MyApp()
-   sys.exit(app.exec_())
+    main()
