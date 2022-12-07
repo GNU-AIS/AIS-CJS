@@ -5,6 +5,9 @@ import requests
 import json
 from xml.etree.ElementTree import parse
 import xmltodict
+from json.decoder import JSONDecoder
+from os import error
+
 
 url = "http://openapi.work.go.kr/opi/opi/opia/wantedApi.do"
 key = "WNLB0BQ31I58AQ2YDZ4ET2VR1HK"
@@ -27,3 +30,9 @@ xml_parse = xmltodict.parse(decode_data)     # string인 xml 파싱
 xml_dict = json.loads(json.dumps(xml_parse))
 
 print(xml_dict)
+headers = {}
+headers = {'content-type': 'application/json'}
+
+postData = xml_dict
+
+response = requests.post("https://test.com", headers=headers, data=postData)
