@@ -1,7 +1,7 @@
 import pymysql
 from flask import Flask, json, request, jsonify
 from threading import Thread
-import datetime, json
+import json, datetime
 
 
 conn = pymysql.connect(host='localhost', user='root', password='1234', db='aisprojectdb', charset='utf8') # mysql 연결
@@ -12,32 +12,17 @@ if conn.open: # DB 연결 여부
 
 try:
     app = Flask(__name__)
-    # flask 메인 
-    # __name__: 현재 이 파일을 실행하고 있는 파일의 이름이 들어감(원본과 같은 파일 일 경우 '__main__')
+    # flask 메인
+    # __name__: 현재 이 파일을 실행하고 있는 파일의 이름이 들어감(원본과 같은 파일 일 경우 '__main__')`
 
     #Career Output
-    #@app.route('/careeroutput',methods=['POST','GET'])
+    @app.route('/careeroutput',methods=['POST','GET'])
 
-   # def careerdboutput(): # DB에서 웹으로 데이터를 보내기위한 함수
+    def careerdboutput(): # DB에서 웹으로 데이터를 보내기위한 함수
 
-     #   sql = "select * from careertbl" # DB에서 필요한 데이터 select하는 sql문
-     #   curs.execute(sql) # sql문 실행
-     #   rows = curs.fetchall() # select한 데이터 fetch (fetchall() : 모든 데이터 fetch)
-    #    columns = [desc[0] for desc in curs.description]
-    #    result = []
-    #    for row in rows:
-    #        row = dict(zip(columns, row))
-    #        result.append(row)
-    #    row = result
-    #    return row
-        # fetch한 데이터 json형식으로 변환 후 string으로 바꿔서 return
-
-    @app.route('/corpoutput',methods=['POST', 'GET'])
-
-    def corpdboutput():
-        sql = "select * from corptbl"
-        curs.execute(sql)
-        rows = curs.fetchall()
+        sql = "select * from careertbl" # DB에서 필요한 데이터 select하는 sql문
+        curs.execute(sql) # sql문 실행
+        rows = curs.fetchall() # select한 데이터 fetch (fetchall() : 모든 데이터 fetch)
         columns = [desc[0] for desc in curs.description]
         result = []
         for row in rows:
@@ -45,11 +30,32 @@ try:
             result.append(row)
         row = result
         return row
+        # fetch한 데이터 json형식으로 변환 후 string으로 바꿔서 return
 
-    # @app.route('/careerinput',methods=['POST', 'GET'])
-    #
-    # @app.route('/corpinput',methods=['POST','GET'])
-    #
+    #@app.route('/corpoutput',methods=['POST', 'GET'])
+
+    #def corpdboutput():
+    #    sql = "select * from coprtbl"
+    #    curs.execute(sql)
+    #    rows = curs.fetchall()
+    #    columns = [desc[0] for desc in curs.description]
+    #    result = []
+    #    for row in rows:
+    #        row = dict(zip(columns, row))
+    #        result.append(row)
+    #    row = result
+    #    return row
+
+    #@app.route('/careerinput',methods=['POST', 'GET'])
+
+    #def insert_corpdb:
+    #    with open('json/job.json', encoding='utf-8') as json_file:
+    #        json_data = json.load(json_file)
+
+    #        json_line = json_data
+
+    #@app.route('/corpinput',methods=['POST','GET'])
+
     # def jsontodb():
     #    company = request.json('company')
     #    #busino = request.json('busino')
@@ -77,5 +83,5 @@ except Exception as e:
     print(e)
 
 finally:
-    app.run(host='0.0.0.0', port= 5000)
+    app.run(host='0.0.0.0', port= 5050)
     conn.close()
