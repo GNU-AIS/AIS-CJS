@@ -3,7 +3,6 @@ from flask import Flask, json, request, jsonify
 from threading import Thread
 import json, datetime
 
-
 conn = pymysql.connect(host='localhost', user='root', password='1234', db='aisprojectdb', charset='utf8') # mysql 연결
 curs = conn.cursor() # sql문을 입력할 cursor 생성
 
