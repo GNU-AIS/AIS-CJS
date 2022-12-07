@@ -34,33 +34,39 @@ try:
         sql = "select * from jptbl"
         curs.execute(sql)
         rows = curs.fetchall()
-        return json.dumps(rows)
+        columns = [desc[0] for desc in curs.description]
+        result = []
+        for row in rows:
+            row = dict(zip(columns, row))
+            result.append(row)
+        row = result
+        return row
 
-    @app.route('/jpinput',methods=['POST','GET'])
+    #@app.route('/jpinput',methods=['POST','GET'])
 
-    def sendtodb():
-        company = request.json('company')
-        busino = request.json('busino')
-        title = request.json('title')
-        salTpNm = request.json('salTpNm')
-        minSal = request.json('minSal')
-        maxSal = request.json('maxSal')
-        region = request.json('region')
-        holidayTpNm = request.json('holidayTpNm')
-        minEdubg = request.json('minEdubg')
-        maxEdubg = request.json('maxEdubg')
-        career = request.json('career')
-        regDt = request.json('regDt')
-        closeDt = request.json('closeDt')
-        wantedInfoUrl = request.json('wantedInfoUrl')
-        wantedMobileInfoUrl = request.json('wantedMobileInfoUrl')
-        basicAddr = request.json('basicAddr')
-        empTpCd = request.json('empTpCd')
-        jobsCd = request.json('jobsCd')
-        smodifyDfm = request.json('smodifyDfm')
-        prefCd = request.json('prefCd')
+    #def sendtodb():
+    #    company = request.json('company')
+    #    busino = request.json('busino')
+    #    title = request.json('title')
+    #    salTpNm = request.json('salTpNm')
+    #    minSal = request.json('minSal')
+    #    maxSal = request.json('maxSal')
+    #    region = request.json('region')
+    #    holidayTpNm = request.json('holidayTpNm')
+    #    minEdubg = request.json('minEdubg')
+    #    maxEdubg = request.json('maxEdubg')
+    #    career = request.json('career')
+    #    regDt = request.json('regDt')
+    #    closeDt = request.json('closeDt')
+    #    wantedInfoUrl = request.json('wantedInfoUrl')
+    #    wantedMobileInfoUrl = request.json('wantedMobileInfoUrl')
+    #    basicAddr = request.json('basicAddr')
+    #    empTpCd = request.json('empTpCd')
+    #    jobsCd = request.json('jobsCd')
+    #    smodifyDfm = request.json('smodifyDfm')
+    #    prefCd = request.json('prefCd')
 
-        return "Success"
+    #    return "Success"
 
 finally:
     app.run(host='0.0.0.0', port= 5000)
