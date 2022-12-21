@@ -3,7 +3,7 @@ import numpy as np
 
 # 한글 폰트 사용을 위해서 세팅
 from matplotlib import font_manager, rc
-font_path = "C:/Windows/Fonts/NGULIM.TTF"
+font_path = "C:/Windows/Fonts/MaruBuri-SemiBold.ttf"
 font = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font)
 
@@ -46,6 +46,7 @@ plt.figure(figsize=(15, 10))
 plt.xlabel('일 평균 임금(만)')
 plt.ylabel('구분')
 
+plt.title('SW기술자 평균임금')
 plt.barh(y, values, color = colors)
 plt.yticks(y, years)
 plt.savefig('일 평균 임금.png')
@@ -55,10 +56,12 @@ y = np.arange(29)
 
 values = [749,1008,722,1140,672,846,718,932,1157,862,570,475,636,496,543,506,698,618,397,798,722,710,883,416,882,492,803,627,580]
 colors = ['#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67', '#E8EC67']
+
 plt.figure(figsize=(15, 10))
 plt.xlabel('월 평균 임금(만)')
 plt.ylabel('구분')
 
+plt.title('SW기술자 평균임금')
 plt.barh(y, values, color = colors)
 plt.yticks(y, years)
 plt.savefig('월 평균 임금.png')
@@ -68,10 +71,12 @@ y = np.arange(29)
 
 values = [45038,60592,43390,68569,40398,50853,43179,56030,69564,51846,34308,28590,38254,29848,32661,30411,41997,37148,23883,47999,43414,42709,53098,25017,53060,29610,48264,37685,34896]
 colors = ['#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6', '#4e79a6']
+
 plt.figure(figsize=(15, 10))
 plt.xlabel('시간 평균 임금(원)')
 plt.ylabel('구분')
 
+plt.title('SW기술자 평균임금')
 plt.barh(y, values, color = colors)
 plt.yticks(y, years)
 plt.savefig('시간평균 임금.png')
