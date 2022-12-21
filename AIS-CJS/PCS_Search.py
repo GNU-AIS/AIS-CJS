@@ -15,7 +15,7 @@ def search():
     num = 1
     
     f = open('PCS_Search.csv', 'w')
-    f.write("No., 모집 시간, 회사 이름, 분류, 학력, 학과, 학점, 토익, 토스, 오픽, 자격증, 인턴, 대외활동, 해외경험, 수상내역" + '\n')
+    f.write("No.,모집 시간,회사 이름,분류,학력,학과,학점,토익,토스,오픽,자격증,인턴,대외활동,해외경험,수상내역" + '\n')
 
     # 웹드라이버 열기 (네이버에 현재상영작 검색 URL)
     url = "https://www.catch.co.kr/JobN/Pass/JobReport/05"
@@ -25,7 +25,7 @@ def search():
     # 크롬드라이버의 현재 페이지의 url 얻기
     xpath_button = '//*[@id="report_wrap4"]/div[2]/div[5]/p/a[12]'
     i=0
-    while i < 1:        
+    while i < 50:
         # 크롬드라이버의 현재 페이지의 url 얻기
         page_url = wd.page_source
 
@@ -66,13 +66,14 @@ def search():
         company_len = len(company_data)
         for tag in field_tag:
             field_data = tag.getText()
-        field_data = field_data[company_len : len(field_data)]
+        field_data = field_data[company_len: len(field_data)]
         for tag in Univ_tag:
             Univ_data = tag.text
         for tag in Department_tag:
             Department_data = tag.text
         for tag in score_tag:
             score_data = tag.text
+        score_data = score_data[0:score_data.find('/')]
         for tag in Toeic_tag:
             Toeic_data = tag.text
         for tag in Toss_tag:
@@ -81,14 +82,19 @@ def search():
             Opic_data = tag.text
         for tag in Certificate_tag:
             Certificate_data = tag.text
+        Certificate_data = Certificate_data[0:1]
         for tag in Intern_tag:
             Intern_data = tag.text
+        Intern_data = Intern_data[0:1]
         for tag in OutAct_tag:
             OutAct_data = tag.text
+        OutAct_data = OutAct_data[0:1]
         for tag in OverExp_tag:
             OverExp_data = tag.text
+        OverExp_data = OverExp_data[0:1]
         for tag in Awards_tag:
             Awards_data = tag.text
+        Awards_data = Awards_data[0:1]
 
         f.write(str(num) + ',' + quarter_data + ',' + company_data + ',' + field_data + ',' + Univ_data + ',' + Department_data + ',' + score_data +
                 ',' + Toeic_data + ',' + Toss_data + ',' + Opic_data + ',' + Certificate_data + ',' + Intern_data + ',' + OutAct_data +
@@ -140,6 +146,7 @@ def search():
             Department_data = tag.text
         for tag in score_tag:
             score_data = tag.text
+        score_data = score_data[0:score_data.find('/')]
         for tag in Toeic_tag:
             Toeic_data = tag.text
         for tag in Toss_tag:
@@ -148,14 +155,19 @@ def search():
             Opic_data = tag.text
         for tag in Certificate_tag:
             Certificate_data = tag.text
+        Certificate_data = Certificate_data[0:1]
         for tag in Intern_tag:
             Intern_data = tag.text
+        Intern_data = Intern_data[0:1]
         for tag in OutAct_tag:
             OutAct_data = tag.text
+        OutAct_data = OutAct_data[0:1]
         for tag in OverExp_tag:
             OverExp_data = tag.text
+        OverExp_data = OverExp_data[0:1]
         for tag in Awards_tag:
             Awards_data = tag.text
+        Awards_data = Awards_data[0:1]
 
         f.write(
             str(num) + ',' + quarter_data + ',' + company_data + ',' + field_data + ',' + Univ_data + ',' + Department_data + ',' + score_data +
@@ -200,7 +212,6 @@ def main():
     
     # 정보 json변환
     make_json(csvFilePath, jsonFilePath)
-
 
 if __name__ == '__main__':
     main()
