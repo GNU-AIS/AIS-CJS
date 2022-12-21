@@ -7,3 +7,4 @@ print(mpl.get_cachedir())
 
 font_list = fm.findSystemFonts(fontpaths=None, fontext='ttf')
 print(font_list)
+print("야")
