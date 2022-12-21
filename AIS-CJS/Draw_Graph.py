@@ -3,7 +3,7 @@ import numpy as np
 
 # 한글 폰트 사용을 위해서 세팅
 from matplotlib import font_manager, rc
-font_path = "C:/Windows/Fonts/MaruBuri-SemiBold.ttf"
+font_path = "C:/Users/dofury/AppData/Local/Microsoft/Windows/Fonts/MaruBuri-Bold.ttf"
 font = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font)
 
