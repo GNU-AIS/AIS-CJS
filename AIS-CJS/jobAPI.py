@@ -26,13 +26,17 @@ response_body = urlopen(request, timeout=60).read() # get bytes data
 decode_data = response_body.decode('utf-8')
 print(type(decode_data))
 
-xml_parse = xmltodict.parse(decode_data)     # string인 xml 파싱
+xml_parse = xmltodict.parse(decode_data)# string인 xml 파싱
 xml_dict = json.loads(json.dumps(xml_parse))
 
 print(xml_dict)
-headers = {}
-headers = {'content-type': 'application/json'}
+with open('job.json', 'w') as f:
+    json.dump(xml_dict, f)
 
-postData = xml_dict
-
-response = requests.post("https://test.com", headers=headers, data=postData)
+#http post 통신 코드
+# headers = {}
+# headers = {'content-type': 'application/json'}
+#
+# postData = xml_dict
+#
+# response = requests.post("https://test.com", headers=headers, data=postData)
