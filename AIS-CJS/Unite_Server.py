@@ -1,7 +1,7 @@
 import pymysql
-from flask import Flask, json, request, jsonify
-from threading import Thread
-import json, datetime
+from flask import Flask, json, send_file
+import json
+import requests
 
 try:
     app = Flask(__name__)
@@ -133,8 +133,28 @@ try:
 
         return json_obj
 
+    @app.route('/graphtime', methods=['POST', 'GET'])
+    def timeimgoutput():
+        print("시간 평균 이미지 전송")
+        return send_file('image/graphtime.png', mimetype='image/png')
+
+    @app.route('/graphdate', methods=['POST', 'GET'])
+    def dateimgoutput():
+        print("일 평균 이미지 전송")
+        return send_file('image/graphdate.png', mimetype='image/png')
+
+    @app.route('/graphmonth', methods=['POST', 'GET'])
+    def monthimgoutput():
+        print("월 평균 이미지 전송")
+        return send_file('image/graphmonth.png', mimetype='image/png')
+
+    @app.route('/wordcloud', methods=['POST', 'GET'])
+    def imageoutput():
+        print("워드 클라우드 이미지 전송")
+        return send_file('image/wordcloud.png', mimetype='image/png')
+
 except Exception as e:
     print(e)
 
 finally:
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5050)
